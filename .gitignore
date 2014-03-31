@@ -1,0 +1,10 @@
+/blade-bin
+/build32_debug/
+/build32_release/
+
+*.a
+*.out
+*.swp
+tags
+.SConstruct.lock
+.sconsign.dblite

@@ -1,0 +1,12 @@
+dup2 test
+fprintf test
+is StdOutFd == STDOUT_FILENO:Yes
+dup2 test
+fprintf test
+is StdOutFd == STDOUT_FILENO:Yes
+dup2 test
+is StdOutFd == STDOUT_FILENO:Yes
+dup2 test
+is StdOutFd == STDOUT_FILENO:Yes
+dup2 test
+is StdOutFd == STDOUT_FILENO:Yes
