@@ -127,3 +127,15 @@ int CFile::GetGroup(char *strGroupName)
 	return SUCCEED;
 
 }
+
+
+int CFile::GetLinkCount(nlink_t &iLinkt)
+{
+	struct stat sStat;
+	int ret = GetStat(&sStat);
+	if (SUCCEED != ret)
+		return ret;
+
+	iLinkt = sStat.st_nlink;
+	return SUCCEED;
+}

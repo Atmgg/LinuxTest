@@ -34,47 +34,57 @@ int main(int argc, char *argv[])
 	CFile file1;
 	char strName[] = "/tmp/file1";
 
+	// Open Test
 	int ret = file1.Open(&strName[0]);
 	if ( SUCCEED != ret )
 		PERR_AND_EXIT(cat, Open, ret);
-
 	cat.info("Open File [%s] succeed", strName);
 
+	// GetFileSize Test
 	int iFileSize;
 	ret = file1.GetFileSize(iFileSize);
 	if ( SUCCEED != ret )
 		PERR_AND_EXIT(cat, GetFileSize, ret);
 	cat.info("size of [%s] is [%d]", strName, iFileSize);
 
-
+	// GetLastChangeTime Test
 	time_t sLastChangeTime;
 	ret = file1.GetLastChangeTime(sLastChangeTime);
 	if ( SUCCEED != ret )
 		PERR_AND_EXIT(cat, GetLastChangeTime, ret);
 	cat.info( "Last Change time of [%s] is [%s]", strName, GetCtimeStr(sLastChangeTime) );
 
-
+	// GetLastAccessTime Test
 	time_t sLastAccessTime;
 	ret = file1.GetLastAccessTime(sLastAccessTime);
 	if ( SUCCEED != ret )
 		PERR_AND_EXIT(cat, GetLastAccessTime, ret);
 	cat.info( "Last Access time of [%s] is [%s]", strName, GetCtimeStr(sLastAccessTime) );
 
+	// GetOwner Test
 	char strBuf[200];
 	ret = file1.GetOwner(strBuf);
 	if ( SUCCEED != ret )
 		PERR_AND_EXIT(cat, GetOwner, ret);
 	cat.info( "Owner of [%s] is [%s]", strName, strBuf );
 
+	// GetGroup Test
 	ret = file1.GetGroup(strBuf);
 	if ( SUCCEED != ret )
 		PERR_AND_EXIT(cat, GetGroup, ret);
 	cat.info( "Group of [%s] is [%s]", strName, strBuf );
 
+	// GetGroup Test
+	unsigned int iLinkCnt = 0;
+	ret = file1.GetLinkCount(iLinkCnt);
+	if ( SUCCEED != ret )
+		PERR_AND_EXIT(cat, GetLinkCount, ret);
+	cat.info( "Link Count of [%s] is [%d]", strName, iLinkCnt );
+
+	// Close Test
 	ret = file1.Close();
 	if ( SUCCEED != ret )
 		PERR_AND_EXIT(cat, Close, ret);
-
 	cat.info("Close File [%s] succeed", strName);
 	
 	exit(0);
