@@ -139,3 +139,62 @@ int CFile::GetLinkCount(nlink_t &iLinkt)
 	iLinkt = sStat.st_nlink;
 	return SUCCEED;
 }
+
+int CFile::GetModeStr(char *strModeStr)
+{
+	struct stat sStat;
+	int ret = GetStat(&sStat);
+	if (SUCCEED != ret)
+		return ret;
+	
+	strncpy(strModeStr, "----------", 11);
+	mode_t iMode = sStat.st_mode;
+
+	if ( S_ISLNK(iMode) )
+	{
+		strModeStr[0] = 'l';
+	}
+	else if ( S_ISREG(iMode) )
+	{
+		strModeStr[0] = '-';
+	}
+	else if ( S_ISDIR(iMode) )
+	{
+		strModeStr[0] = 'd';
+	}
+	else if ( S_ISCHR(iMode) )
+	{
+		strModeStr[0] = 'c';
+	}
+	else if ( S_ISFIFO(iMode) )
+	{
+		strModeStr[0] = 'f';
+	}
+	else if ( S_ISSOCK(iMode) )
+	{
+		strModeStr[0] = 's';
+	}
+
+	if (iMode&S_IRUSR)
+		strModeStr[1] = 'r';
+	if (iMode&S_IWUSR)
+		strModeStr[2] = 'w';
+	if (iMode&S_IXUSR)
+		strModeStr[3] = 'x';
+
+	if (iMode&S_IRGRP)
+		strModeStr[4] = 'r';
+	if (iMode&S_IWGRP)
+		strModeStr[5] = 'w';
+	if (iMode&S_IXGRP)
+		strModeStr[6] = 'x';
+
+	if (iMode&S_IROTH)
+		strModeStr[7] = 'r';
+	if (iMode&S_IWOTH)
+		strModeStr[8] = 'w';
+	if (iMode&S_IXOTH)
+		strModeStr[9] = 'x';
+
+	return SUCCEED;
+}

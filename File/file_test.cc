@@ -81,6 +81,12 @@ int main(int argc, char *argv[])
 		PERR_AND_EXIT(cat, GetLinkCount, ret);
 	cat.info( "Link Count of [%s] is [%d]", strName, iLinkCnt );
 
+	// GetGroup Test
+	ret = file1.GetModeStr(strBuf);
+	if ( SUCCEED != ret )
+		PERR_AND_EXIT(cat, GetModeStr, ret);
+	cat.info( "Mode String of [%s] is [%s]", strName, strBuf );
+
 	// Close Test
 	ret = file1.Close();
 	if ( SUCCEED != ret )

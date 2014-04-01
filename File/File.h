@@ -27,6 +27,7 @@ class CFile
 		int GetLastChangeTime(time_t &sLastChangeTime);
 		int GetLastAccessTime(time_t &sLastAccessTime);
 		int GetLinkCount(nlink_t &iLinkt);
+		int GetModeStr(char *strModeStr);
 		int GetOwner(char *strOwnerName);
 		int GetGroup(char *strGroupName);
 
