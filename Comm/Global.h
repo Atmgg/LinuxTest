@@ -10,6 +10,9 @@
 #define ERR_ILEAGAL_CLASS_MEMBER (-4) // meet the illegal class member while calling, the reason may be calling the class function in the wrong order or way
 #define ERR_NO_MATCH_UID (-5) // can't find the match uid in the /etc/passwd file
 #define ERR_NO_MATCH_GID (-6) // can't find the match gid in the /etc/group file
+#define ERR_NO_MATCH_UNAME (-6) // can't find the match username in the /etc/passwd file
+#define ERR_NO_MATCH_GNAME (-7) // can't find the match groupname in the /etc/group file
+#define ERR_FILE_NOT_OPEN (-8)
 
 
 #define LOG_PATH "/tmp/ted_log"
