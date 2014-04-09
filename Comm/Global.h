@@ -13,6 +13,7 @@
 #define ERR_NO_MATCH_UNAME (-6) // can't find the match username in the /etc/passwd file
 #define ERR_NO_MATCH_GNAME (-7) // can't find the match groupname in the /etc/group file
 #define ERR_FILE_NOT_OPEN (-8)
+#define ERR_THREAD_IS_RUNNING (-9)
 
 
 #define LOG_PATH "/tmp/ted_log"
