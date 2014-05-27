@@ -6,5 +6,6 @@
 *.out
 *.swp
 tags
+^\.
 .SConstruct.lock
 .sconsign.dblite
